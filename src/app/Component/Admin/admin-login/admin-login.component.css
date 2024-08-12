@@ -1,0 +1,8 @@
+.bg-light-blue {
+    background-color: #add8e6; /* Light blue color */
+  }
+  
+  .min-vh-100 {
+    min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+  }
+  
