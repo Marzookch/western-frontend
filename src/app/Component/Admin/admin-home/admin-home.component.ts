@@ -10,14 +10,10 @@ export class AdminHomeComponent {
 
   constructor(private router: Router) { }
 
-  logout() {
-    // Remove the JWT token and adminId from localStorage or perform any other logout actions
-    localStorage.removeItem('orgaisertoken');
-    localStorage.removeItem('organisaerId'); // Assuming you store the admin's ID as 'adminId'
-    
-    // Optionally clear other admin-related data from localStorage
-    // Redirect to the login page or any other desired route
-    this.router.navigate(['admin-login']); // Replace 'login' with your login route
+  category(): void {
+    this.router.navigate(['/category']); // Replace '/detail' with your desired route
   }
-
+  addproduct(): void {
+    this.router.navigate(['/product-adding']); // Replace '/detail' with your desired route
+  }
 }

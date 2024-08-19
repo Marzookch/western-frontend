@@ -1,0 +1,11 @@
+/* styles.css or component-specific CSS file */
+.table-outline {
+    border: 2px solid #dee2e6; /* Outline color */
+    border-radius: 0.25rem; /* Optional: rounded corners */
+  }
+  
+  .table-outline th,
+  .table-outline td {
+    border: 1px solid #dee2e6; /* Cell border color */
+  }
+  

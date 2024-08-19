@@ -1,0 +1,29 @@
+/* styles.scss */
+
+/* Hover effect for the cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  }
+  
+  /* Space between cards */
+  .row > .col {
+    margin-bottom: 1.5rem; /* Space below each card */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .row {
+      margin-top: 1rem; /* Adjust top margin for smaller screens */
+      margin-bottom: 1rem; /* Adjust bottom margin for smaller screens */
+    }
+  
+    .row > .col {
+      margin-bottom: 1rem; /* Adjust bottom margin for smaller screens */
+    }
+  }
+  
