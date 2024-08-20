@@ -42,6 +42,13 @@ export class AdminService {
     });
   }
 
+  addProduct(productData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/admin/admin-addproduct`, productData, {
+        withCredentials: true
+    });
+}
+
+
 
   storeToken(tokenValue: string) {
     localStorage.setItem('token', tokenValue);

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/Service/admin/admin.service';
 
 @Component({
@@ -16,7 +14,8 @@ export class AdminProdutAddingComponent implements OnInit {
   sizes: string[] = ['S', 'M', 'L', 'XL']; // Example sizes
   selectedSizes: string[] = []; // To keep track of selected sizes
   categories: any[] = [];
-  imagePreviews: string[] = [];
+  imagePreviews: string[] = []; // To store image previews as base64 strings
+  productRate :string = '';
   errorMsg: string | null = null;
 
   private maxImageCount = 4;
@@ -30,14 +29,12 @@ export class AdminProdutAddingComponent implements OnInit {
   loadCategories(): void {
     this.adminService.getCategoryList().subscribe(data => {
       console.log('Fetched categories:', data);
-      // Temporarily disable filtering
       this.categories = data.category; // Show all categories
-      // Apply filtering only if needed
-      // this.categories = data.category.filter((c: any) => c.Status);
     }, error => {
       console.error('Error fetching categories:', error);
     });
   }
+
   onFileChange(event: any): void {
     const files: FileList = event.target.files;
     this.errorMsg = null;
@@ -47,7 +44,7 @@ export class AdminProdutAddingComponent implements OnInit {
       return;
     }
 
-    this.imagePreviews = [];
+    this.imagePreviews = []; // Clear previous previews
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -59,14 +56,14 @@ export class AdminProdutAddingComponent implements OnInit {
 
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.imagePreviews.push(e.target.result);
+        this.imagePreviews.push(e.target.result); // Store base64 string
       };
       reader.readAsDataURL(file);
     }
   }
 
-  removeImage(image: string): void {
-    this.imagePreviews = this.imagePreviews.filter(img => img !== image);
+  removeImage(img: string): void {
+    this.imagePreviews = this.imagePreviews.filter(image => image !== img);
   }
 
   onSizeChange(size: string, event: any): void {
@@ -78,20 +75,47 @@ export class AdminProdutAddingComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.productName || this.quantity === null || !this.description || !this.category || this.selectedSizes.length === 0) {
-      // Handle form validation and submission
+    if (!this.productName || this.quantity === null || !this.description || !this.category || this.selectedSizes.length === 0 || !this.imagePreviews.length) {
       return;
     }
 
-    const formData = {
-      productName: this.productName,
-      quantity: this.quantity,
-      description: this.description,
-      category: this.category,
-      sizes: this.selectedSizes,
-      images: this.imagePreviews
-    };
+    const formData = new FormData();
+    formData.append('productName', this.productName);
+    formData.append('quantity', this.quantity!.toString());
+    formData.append('productDescription', this.description);
+    formData.append('categoryId', this.category);
+    formData.append('productRate', this.productRate.toString());
+    
+    this.selectedSizes.forEach((size, index) => {
+      formData.append(`size[${index}]`, size);
+    });
 
-    console.log('Form Data:', formData);
+    // Append each image file
+    this.imagePreviews.forEach((img, index) => {
+      const blob = this.dataURItoBlob(img); // Convert base64 to Blob
+      formData.append('images', blob, `image${index}.png`);
+    });
+
+    console.log('Submitting FormData:', formData);
+
+    this.adminService.addProduct(formData).subscribe(
+      (response) => {
+        console.log('Product added successfully:', response);
+      },
+      (error) => {
+        console.error('Error adding product:', error);
+      }
+    );
+  }
+
+  dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: mimeString });
   }
 }

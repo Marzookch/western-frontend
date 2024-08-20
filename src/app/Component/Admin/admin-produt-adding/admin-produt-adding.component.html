@@ -1,58 +1,57 @@
 <app-admin-header></app-admin-header>
 
 <div class="container">
-    <h1>Upload Product</h1>
-    <form (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="productName">Product Name:</label>
-        <input id="productName" [(ngModel)]="productName" name="productName" type="text" required>
+  <h1>Upload Product</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="productName">Product Name:</label>
+      <input id="productName" [(ngModel)]="productName" name="productName" type="text" required>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input id="quantity" [(ngModel)]="quantity" name="quantity" type="number" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="description" name="description" rows="4" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select id="category" [(ngModel)]="category" name="category" required>
+        <option *ngFor="let category of categories" [value]="category._id">
+          {{ category.Category }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="rate">Rate:</label>
+      <input id="rate" [(ngModel)]="productRate" name="productRate" type="number" required>
+    </div>
+    <div class="form-group">
+      <label>Sizes:</label>
+      <div *ngFor="let size of sizes">
+        <label>
+          <input type="checkbox" [value]="size" (change)="onSizeChange(size, $event)">
+          {{ size }}
+        </label>
       </div>
-  
-      <div class="form-group">
-        <label for="quantity">Quantity:</label>
-        <input id="quantity" [(ngModel)]="quantity" name="quantity" type="number" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" [(ngModel)]="description" name="description" rows="4" required></textarea>
-      </div>
-  
-      <div class="form-group">
-        <label for="category">Category:</label>
-        <select id="category" [(ngModel)]="category" name="category" required>
-          <option *ngFor="let category of categories" [value]="category._id">
-            {{ category.Category }}
-          </option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label>Sizes:</label>
-        <div *ngFor="let size of sizes">
-          <label>
-            <input
-              type="checkbox"
-              [value]="size"
-              (change)="onSizeChange(size, $event)">
-            {{ size }}
-          </label>
+    </div>
+
+    <div class="form-group">
+      <label for="images">Images (Max 4):</label>
+      <input id="images" type="file" (change)="onFileChange($event)" accept=".jpg,.jpeg,.png,.svg" multiple>
+      <div id="imagePreview" class="image-preview">
+        <div *ngFor="let img of imagePreviews" class="image-wrapper">
+          <img [src]="img" alt="Preview">
+          <button type="button" (click)="removeImage(img)">×</button>
         </div>
       </div>
-  
-      <div class="form-group">
-        <label for="images">Images (Max 4):</label>
-        <input id="images" type="file" (change)="onFileChange($event)" accept=".jpg,.jpeg,.png,.svg" multiple>
-        <div id="imagePreview" class="image-preview">
-          <div *ngFor="let img of imagePreviews" class="image-wrapper">
-            <img [src]="img" alt="Preview">
-            <button type="button" (click)="removeImage(img)">×</button>
-          </div>
-        </div>
-        <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
-      </div>
-  
-      <button type="submit" [disabled]="!productName || quantity === null || !description || !category || selectedSizes.length === 0 || !imagePreviews.length">Submit</button>
-    </form>
-  </div>
-  
+      <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
+    </div>
+
+    <button type="submit" [disabled]="!productName || quantity === null || !description || !category || selectedSizes.length === 0 || !imagePreviews.length">Submit</button>
+  </form>
+</div>
