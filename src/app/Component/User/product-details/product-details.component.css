@@ -1,0 +1,18 @@
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+  }
+  
+  .icon-hover:hover i {
+    color: #3b71ca !important;
+  }
+
+  .main-image {
+    max-width: 100%;
+    max-height: 100vh; /* Adjust as needed for better fit */
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Ensures the image maintains aspect ratio */
+  }
+  

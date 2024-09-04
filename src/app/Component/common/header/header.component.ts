@@ -1,4 +1,5 @@
-import { Component,HostListener } from '@angular/core';
+import { Component,HostListener,Input } from '@angular/core';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,8 @@ import { Component,HostListener } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  constructor(private router: Router) {}
+  @Input() product: any;
   showDropdown: string | null = null;
 
   // Toggle the dropdown menu
@@ -21,6 +23,20 @@ export class HeaderComponent {
     if (!target.closest('.dropdown')) {
       this.showDropdown = null;
     }
+  }
+
+  redirectToUserProfile() {
+    // Navigate to the user's profile page
+    this.router.navigate(['/user-profile']);
+  }
+
+  logout() {
+    // Clear user data from localStorage or sessionStorage
+    localStorage.removeItem('userToken'); // Example: clear the token
+    localStorage.removeItem('selectedProduct'); // Clear any other relevant data
+    sessionStorage.removeItem('authToken'); 
+    // Redirect to the login page or home page after logging out
+    this.router.navigate(['/user-login']);
   }
 
 }

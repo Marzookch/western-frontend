@@ -1,0 +1,55 @@
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 400px; /* Increased width of the sidebar */
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar-content {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .sidebar.show {
+    transform: translateX(0);
+  }
+  
+  /* Close and Submit buttons styles */
+  .form-buttons {
+    display: flex;
+    justify-content: space-between; /* Space between the buttons */
+    margin-top: 20px; /* Space above buttons */
+  }
+  
+  .btn-close {
+    background-color: #7d6c70; /* Secondary color for close button */
+    border: none;
+    color: #f90000; /* Text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Font size */
+  }
+  
+  .btn-close:hover {
+    background-color: #f20101; /* Darker shade on hover */
+  }
+  
+  .btn-submit {
+    background-color: #007bff; /* Primary color for submit button */
+    border: none;
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Font size */
+  }
+  
+  .btn-submit:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  

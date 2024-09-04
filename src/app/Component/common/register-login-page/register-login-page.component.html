@@ -1,1 +1,209 @@
-<h1>lowkoskf</h1>
+<section class="h-100 gradient-form" style="background-color: #eee">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                    style="width: 185px"
+                    alt="logo"
+                  />
+                  <h4 class="mt-1 mb-5 pb-1">We are The Western Team</h4>
+                </div>
+
+                <form>
+                  <!-- Login Form -->
+                  <div *ngIf="!showRegisterFields && !showForgotPassword && !showOTP">
+                    <p>Please login to your account</p>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="emaiol"
+                        name="username"
+                        placeholder="Phone number or email address"
+                        required
+                        [(ngModel)]="loginData.email"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                        [(ngModel)]="loginData.password"
+                      />
+                    </div>
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button
+                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button"
+                        (click)="login()"
+                      >
+                        Log in
+                      </button>
+                      <a class="text-muted" (click)="toggleForgotPassword()">Forgot password?</a>
+                    </div>
+                  </div>
+
+                  <!-- Registration Form -->
+                  <div *ngIf="showRegisterFields && !showForgotPassword && !showOTP">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        [(ngModel)]="registerData.name"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        [(ngModel)]="registerData.email"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="number" class="form-label">Number</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="number"
+                        name="number"
+                        placeholder="Enter your number"
+                        [(ngModel)]="registerData.number"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                        [(ngModel)]="registerData.password"
+                      />
+                    </div>
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button
+                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button"
+                        (click)="signup()"
+                      >
+                        Sign up
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- OTP Section -->
+                  <div *ngIf="showOTP">
+                    <div class="mb-3">
+                      <label for="otp" class="form-label">Enter OTP</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="otp"
+                        name="otp"
+                        placeholder="Enter your OTP"
+                        [(ngModel)]="otpData.otp"
+                      />
+                    </div>
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button
+                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button"
+                        (click)="submitOTP()"
+                      >
+                        Submit OTP
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Forgot Password Form -->
+                  <div *ngIf="showForgotPassword">
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        [(ngModel)]="forgotPasswordData.email"
+                      />
+                    </div>
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button
+                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                        type="button"
+                        (click)="resetPassword()"
+                      >
+                        Change Password
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Footer Actions -->
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2" *ngIf="!showForgotPassword && !showRegisterFields">
+                      Don't have an account?
+                    </p>
+                    <p class="mb-0 me-2" *ngIf="showRegisterFields && !showForgotPassword">
+                      Already have an account?
+                    </p>
+                    <p class="mb-0 me-2" *ngIf="showForgotPassword">
+                      Go back to
+                    </p>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger"
+                      (click)="toggleRegisterFields()"
+                      *ngIf="!showForgotPassword && !showOTP"
+                    >
+                      {{ showRegisterFields ? "Back to Login" : "Create new" }}
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger"
+                      (click)="toggleForgotPassword()"
+                      *ngIf="showForgotPassword"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">We are more than just a company</h4>
+                <p class="small mb-0">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

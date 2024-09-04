@@ -15,7 +15,13 @@ import { AdminService } from './Service/admin/admin.service';
 import { AdminCategoryAddingComponent } from './Component/Admin/admin-category-adding/admin-category-adding.component';
 import { AdminHeaderComponent } from './Component/Admin/admin-header/admin-header.component';
 import { AdminProdutAddingComponent } from './Component/Admin/admin-produt-adding/admin-produt-adding.component';
-
+import { HomeComponent } from './Component/User/home/home.component';
+import { ProductDetailsComponent } from './Component/User/product-details/product-details.component';
+import { ProductOrderComponent } from './Component/User/product-order/product-order.component';
+import { ProfileComponent } from './Component/User/profile/profile.component'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { ProfileAddressComponent } from './Component/User/profile-address/profile-address.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +34,11 @@ import { AdminProdutAddingComponent } from './Component/Admin/admin-produt-addin
     AdminCategoryAddingComponent,
     AdminHeaderComponent,
     AdminProdutAddingComponent,
+    HomeComponent,
+    ProductDetailsComponent,
+    ProductOrderComponent,
+    ProfileComponent,
+    ProfileAddressComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,13 @@ import { AdminProdutAddingComponent } from './Component/Admin/admin-produt-addin
     ReactiveFormsModule,
 
   ],
-  providers: [AdminService],
+  providers: [AdminService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

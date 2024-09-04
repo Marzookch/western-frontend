@@ -1,0 +1,57 @@
+.gradient-custom-2 {
+    background: linear-gradient(to right, #000000, #FFD700);
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 100%; /* Increase the card width */
+    max-width: 250px; /* Limit the card width for responsive design */
+    height: auto; /* Automatically adjust height */
+}
+
+.card-img-top {
+    width: 100%; /* Ensure the image takes full width of the card */
+    height: 250px; /* Set the desired height for the image */
+    object-fit: cover; /* Cover the card without distorting the image */
+}
+
+  .wishlist-icon-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .wishlist-icon {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .wishlist-icon:hover, .wishlist-icon.active {
+    color: red;
+  }
+  
+  .btn-outline-light {
+    border: 1px solid #FFD700;
+    color: #FFD700;
+  }
+  
+  .btn-outline-light:hover {
+    background-color: #FFD700;
+    color: black;
+  }
+  
+  .btn-light {
+    background-color: #FFD700;
+    color: black;
+  }
+  
+  .btn-light:hover {
+    background-color: #e6c200;
+    color: black;
+  }
+  
