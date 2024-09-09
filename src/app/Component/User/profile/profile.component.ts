@@ -158,6 +158,11 @@ export class ProfileComponent implements OnInit {
       (response) => {
         console.log('Profile updated successfully:', response);
         Swal.fire('Success', 'Profile updated successfully', 'success');
+  
+        // Clear the form fields by resetting the user object
+        this.resetForm();
+  
+        // Close the sidebar
         this.closeSidebar();
       },
       (error) => {
@@ -166,8 +171,38 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-
+  
+  // Method to reset the form fields
+  resetForm() {
+    this.user = {
+      post: '',
+      city: '',
+      houseaddress: '',
+      landmark: ''
+      // Add other fields you want to reset here
+    };
+  }
   closeSidebar() {
     this.isSlideBarOpen = false; // Hide the sidebar
+  }
+
+   onEditAddress(index: number) {
+    const address = this.user.addresses[index];
+    // Open a modal or navigate to an address edit form
+    // For simplicity, you can use a simple prompt for this example
+    const updatedAddress = prompt("Edit Address:", address.address);
+    if (updatedAddress !== null) {
+      this.user.addresses[index].address = updatedAddress;
+      // Call the service to save the updated address to the backend
+      
+    }
+  }
+
+  onRemoveAddress(index: number) {
+    if (confirm("Are you sure you want to remove this address?")) {
+      this.user.addresses.splice(index, 1);
+      // Call the service to remove the address from the backend
+      
+    }
   }
 }

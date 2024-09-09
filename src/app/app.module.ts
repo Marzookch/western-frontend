@@ -21,7 +21,8 @@ import { ProductOrderComponent } from './Component/User/product-order/product-or
 import { ProfileComponent } from './Component/User/profile/profile.component'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
-import { ProfileAddressComponent } from './Component/User/profile-address/profile-address.component'
+import { ProfileAddressComponent } from './Component/User/profile-address/profile-address.component';
+import { OrderDetilesComponent } from './Component/Admin/order-detiles/order-detiles.component'
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ProfileAddressComponent } from './Component/User/profile-address/profil
     ProductOrderComponent,
     ProfileComponent,
     ProfileAddressComponent,
+    OrderDetilesComponent,
   ],
   imports: [
     BrowserModule,

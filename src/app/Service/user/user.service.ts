@@ -52,4 +52,10 @@ export class UserService {
       withCredentials: true
     });
   }
+
+  ordering(productData:any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/ordering`, productData, {
+      withCredentials: true
+    });
+  }
 }

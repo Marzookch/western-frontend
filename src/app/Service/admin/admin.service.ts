@@ -10,6 +10,12 @@ export class AdminService {
 
   constructor(private http: HttpClient) {}
 
+  
+  isLoggedIn(): boolean {
+   
+    return !!localStorage.getItem('token');
+  }
+
   adminlogin(email: string, password: string): Observable<any> {
     const admin = { email, password };
     console.log(admin);

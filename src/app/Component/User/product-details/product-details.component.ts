@@ -12,6 +12,7 @@ export class ProductDetailsComponent implements OnInit {
   selectedImageUrl: string | undefined;
   selectedQuantity: number = 1;
   totalPrice: number = 0;
+  selectedSize: string = 'S';
 
   constructor(private productService: ProductService, private router: Router) {}
 
@@ -65,14 +66,14 @@ export class ProductDetailsComponent implements OnInit {
   buyNow() {
     const productDetails = {
       productName: this.product?.productName,
-      productId: this.product?.productId,
+      productId: this.product?._id,
       productImage: this.selectedImageUrl,
       quantity: this.selectedQuantity,
-      size: this.product?.size,
+      size:this.selectedSize,
       productRate: this.product?.productRate,
       totalPrice: this.totalPrice
     };
-console.log("ENTER");
+console.log("productDetails");
 
     // Navigate to the product-order page and pass the product details
     this.router.navigate(['/product-order'], {

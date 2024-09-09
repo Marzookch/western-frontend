@@ -39,8 +39,27 @@
         <!-- Checkout -->
         <div class="card shadow-0 border">
           <div class="p-4">
-            <h5 class="card-title mb-3">Guest checkout</h5>
+            <h5 class="card-title mb-3">Checkout</h5>
             <div class="row">
+              <!-- Address Dropdown -->
+              <div class="col-12 mb-3">
+                <p class="mb-0">Select Address</p>
+                <div class="form-outline">
+                  <select
+                    class="form-control"
+                    (change)="onAddressSelect($event)"
+                  >
+                    <option
+                      *ngFor="let address of user.addresses; let i = index"
+                      [value]="i"
+                    >
+                      {{ address.houseaddress }} - {{ address.city }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- First name -->
               <div class="col-6 mb-3">
                 <p class="mb-0">First name</p>
                 <div class="form-outline">
@@ -49,42 +68,73 @@
                     id="typeText"
                     placeholder="Type here"
                     class="form-control"
+                    [(ngModel)]="user.name"
                   />
                 </div>
               </div>
 
+              <!-- Phone Number -->
               <div class="col-6">
-                <p class="mb-0">Last name</p>
+                <p class="mb-0">Phone Number</p>
+                <div class="form-outline">
+                  <input
+                    type="tel"
+                    id="typeText"
+                    placeholder="Type here"
+                    class="form-control"
+                    [(ngModel)]="user.number"
+                  />
+                </div>
+              </div>
+
+              <!-- House Address -->
+              <div class="col-6 mb-3">
+                <p class="mb-0">Address</p>
                 <div class="form-outline">
                   <input
                     type="text"
                     id="typeText"
-                    placeholder="Type here"
                     class="form-control"
+                    [(ngModel)]="selectedAddress.houseaddress"
                   />
                 </div>
               </div>
 
+              <!-- Postcode -->
               <div class="col-6 mb-3">
-                <p class="mb-0">Phone</p>
+                <p class="mb-0">Post</p>
                 <div class="form-outline">
                   <input
-                    type="tel"
-                    id="typePhone"
-                    value="+48 "
+                    type="text"
+                    id="typeText"
                     class="form-control"
+                    [(ngModel)]="selectedAddress.post"
                   />
                 </div>
               </div>
 
+              <!-- City -->
               <div class="col-6 mb-3">
-                <p class="mb-0">Email</p>
+                <p class="mb-0">City</p>
                 <div class="form-outline">
                   <input
-                    type="email"
-                    id="typeEmail"
-                    placeholder="example@gmail.com"
+                    type="text"
+                    id="typeText"
                     class="form-control"
+                    [(ngModel)]="selectedAddress.city"
+                  />
+                </div>
+              </div>
+
+              <!-- Landmark -->
+              <div class="col-6 mb-3">
+                <p class="mb-0">Landmark</p>
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="typeText"
+                    class="form-control"
+                    [(ngModel)]="selectedAddress.landmark"
                   />
                 </div>
               </div>
@@ -106,137 +156,117 @@
 
             <h5 class="card-title mb-3">Shipping info</h5>
 
-            <div class="row mb-3">
-              <div class="col-lg-4 mb-3">
-                <!-- Default checked radio -->
-                <div class="form-check h-100 border rounded-3">
-                  <div class="p-3">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                      checked
-                    />
-                    <label class="form-check-label" for="flexRadioDefault1">
-                      Express delivery <br />
-                      <small class="text-muted">3-4 days via Fedex </small>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 mb-3">
-                <!-- Default radio -->
-                <div class="form-check h-100 border rounded-3">
-                  <div class="p-3">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault2"
-                    />
-                    <label class="form-check-label" for="flexRadioDefault2">
-                      Post office <br />
-                      <small class="text-muted">20-30 days via post </small>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 mb-3">
-                <!-- Default radio -->
-                <div class="form-check h-100 border rounded-3">
-                  <div class="p-3">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
-                    />
-                    <label class="form-check-label" for="flexRadioDefault3">
-                      Self pick-up <br />
-                      <small class="text-muted">Come to our shop </small>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
+<div class="row mb-3">
+  <div class="col-lg-4 mb-3">
+    <!-- Express delivery -->
+    <div class="form-check h-100 border rounded-3">
+      <div class="p-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="shippingMethod"
+          id="expressDelivery"
+          [(ngModel)]="selectedShippingMethod"
+          value="Express delivery"
+        />
+        <label class="form-check-label" for="expressDelivery">
+          Express delivery <br />
+          <small class="text-muted">3-4 days via Fedex</small>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 mb-3">
+    <!-- Post office -->
+    <div class="form-check h-100 border rounded-3">
+      <div class="p-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="shippingMethod"
+          id="postOffice"
+          [(ngModel)]="selectedShippingMethod"
+          value="Post office"
+        />
+        <label class="form-check-label" for="postOffice">
+          Post office <br />
+          <small class="text-muted">20-30 days via post</small>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 mb-3">
+    <!-- Self pick-up -->
+    <div class="form-check h-100 border rounded-3">
+      <div class="p-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="shippingMethod"
+          id="selfPickup"
+          [(ngModel)]="selectedShippingMethod"
+          value="Self pick-up"
+        />
+        <label class="form-check-label" for="selfPickup">
+          Self pick-up <br />
+          <small class="text-muted">Come to our shop</small>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
 
-            <div class="row">
-              <div class="col-sm-8 mb-3">
-                <p class="mb-0">Address</p>
-                <div class="form-outline">
-                  <input
-                    type="text"
-                    id="typeText"
-                    placeholder="Type here"
-                    class="form-control"
-                  />
-                </div>
-              </div>
+<h5 class="card-title mb-3">Payment method</h5>
 
-              <div class="col-sm-4 mb-3">
-                <p class="mb-0">City</p>
-                <select class="form-select">
-                  <option value="1">New York</option>
-                  <option value="2">Moscow</option>
-                  <option value="3">Samarqand</option>
-                </select>
-              </div>
+<div class="row mb-3">
+  <div class="col-lg-6 mb-3">
+    <!-- Online Payment -->
+    <div class="form-check h-100 border rounded-3">
+      <div class="p-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="paymentMethod"
+          id="onlinePayment"
+          [(ngModel)]="selectedPaymentMethod"
+          value="Online Payment"
+        />
+        <label class="form-check-label" for="onlinePayment">
+          Online Payment
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 mb-3">
+    <!-- Cash on Delivery -->
+    <div class="form-check h-100 border rounded-3">
+      <div class="p-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="paymentMethod"
+          id="cod"
+          [(ngModel)]="selectedPaymentMethod"
+          value="Cash on Delivery"
+        />
+        <label class="form-check-label" for="cod">
+          Cash on Delivery
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
 
-              <div class="col-sm-4 mb-3">
-                <p class="mb-0">House</p>
-                <div class="form-outline">
-                  <input
-                    type="text"
-                    id="typeText"
-                    placeholder="Type here"
-                    class="form-control"
-                  />
-                </div>
-              </div>
+<!-- Error message -->
+<div *ngIf="showError" class="text-danger mb-3">
+  Please select both a shipping method and a payment method.
+</div>
 
-              <div class="col-sm-4 col-6 mb-3">
-                <p class="mb-0">Postal code</p>
-                <div class="form-outline">
-                  <input type="text" id="typeText" class="form-control" />
-                </div>
-              </div>
+<div class="float-end">
+  <button class="btn btn-light border" (click)="onCancel()">Cancel</button>
+  <button class="btn btn-success shadow-0 border" (click)="onContinue()">Continue</button>
+</div>
 
-              <div class="col-sm-4 col-6 mb-3">
-                <p class="mb-0">Zip</p>
-                <div class="form-outline">
-                  <input type="text" id="typeText" class="form-control" />
-                </div>
-              </div>
-            </div>
-
-            <div class="form-check mb-3">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault1"
-              />
-              <label class="form-check-label" for="flexCheckDefault1"
-                >Save this address</label
-              >
-            </div>
-
-            <div class="mb-3">
-              <p class="mb-0">Message to seller</p>
-              <div class="form-outline">
-                <textarea
-                  class="form-control"
-                  id="textAreaExample1"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <div class="float-end">
-              <button class="btn btn-light border">Cancel</button>
-              <button class="btn btn-success shadow-0 border">Continue</button>
-            </div>
           </div>
         </div>
         <!-- Checkout -->
@@ -282,21 +312,25 @@
               <span
                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary"
               >
-              {{ productDetails.quantity }}
+                {{ productDetails.quantity }}
               </span>
               <img
-                src="https://mdbootstrap.com/img/bootstrap-ecommerce/items/7.webp"
-                style="height: 96px; width: 96x"
+                [src]="productDetails.productImage"
+                style="height: 96px; width: 96px;"
                 class="img-sm rounded border"
+                alt="{{ productDetails.productName }}"
               />
             </div>
             <div class="">
               <a href="#" class="nav-link">
                 {{ productDetails.productName }}
               </a>
-              <div class="price text-muted">Total: {{ productDetails.productRate }}</div>
+              <div class="price text-muted">
+                Total: {{ productDetails.totalPrice }}
+              </div>
             </div>
           </div>
+          
 
           <div class="d-flex align-items-center mb-4">
             <div class="me-3 position-relative">

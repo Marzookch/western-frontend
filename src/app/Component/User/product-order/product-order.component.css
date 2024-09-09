@@ -1,0 +1,15 @@
+/* Ensure outline is visible */
+input.form-control {
+    border: 1px solid #ccc; /* Define a border */
+    outline: none; /* To remove the default browser outline */
+    padding: 0.5rem; /* Optional: Adjust the padding */
+    box-shadow: none; /* Optional: Remove any box-shadow */
+  }
+  
+  /* Add outline on focus */
+  input.form-control:focus {
+    border-color: #007bff; /* Add custom border color on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: Add box-shadow on focus */
+  }
+  

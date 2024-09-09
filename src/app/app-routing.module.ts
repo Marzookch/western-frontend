@@ -9,9 +9,11 @@ import { AdminProdutAddingComponent } from './Component/Admin/admin-produt-addin
 import { HomeComponent } from'./Component/User/home/home.component';
 import { ProductDetailsComponent } from './Component/User/product-details/product-details.component'
 import { UserGuard } from'./guard/user.guard'
+import { AdminGuard } from'./guard/admin.guard'
 import { ProductOrderComponent } from './Component/User/product-order/product-order.component'
 import { ProfileComponent } from './Component/User/profile/profile.component';
 import { ProfileAddressComponent } from './Component/User/profile-address/profile-address.component';
+import { OrderDetilesComponent } from './Component/Admin/order-detiles/order-detiles.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -25,6 +27,7 @@ const routes: Routes = [
   { path: 'product-order',component: ProductOrderComponent, canActivate: [UserGuard]},
   { path: 'user-profile',component: ProfileComponent, canActivate:[UserGuard]},
   { path: 'edit-address',component: ProfileAddressComponent, canActivate:[UserGuard]},
+  { path: 'order-management',component: OrderDetilesComponent, canActivate:[AdminGuard]},
 
 
 
