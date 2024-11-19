@@ -16,4 +16,8 @@ export class AdminHomeComponent {
   addproduct(): void {
     this.router.navigate(['/product-adding']); // Replace '/detail' with your desired route
   }
+
+  orderManagement(): void {
+    this.router.navigate(['/order-management']); // Replace '/detail' with your desired route
+  }
 }

@@ -1,72 +1,213 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-  <div class="container-fluid">
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <a class="navbar-brand mt-2 mt-lg-0" href="">
-        <img src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600" height="15" alt="" loading="lazy" />
-      </a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Team</a></li>
-        <li class="nav-item"><a class="nav-link" href="/uer-lo">Projects</a></li>
-      </ul>
+<div class="discover-elegance-container">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">WESTERN19</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-light">Shop Now</button>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <div class="d-flex align-items-center">
-      <!-- Icon -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="/user-login">Register/Login</a></li>
-
-      </ul>
-
-      <!-- Notifications -->
-
-      <!-- Avatar -->
-    </div>
-  </div>
-</nav>
-
-
-<div class="parallax-container">
-  <div class="parallax">
-    <a href="#">
-      <div class="parallax-background" style="background-image: url('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-    </a>
-    <div class="content">
-      <h1>Welcome to Our Website</h1>
-      <p>Experience the beauty of parallax scrolling!</p>
-      <a href="#more-info" class="btn">Learn More</a>
-    </div>
-  </div>
-
-  <section id="more-info" class="info-section">
-    <h2>More Information</h2>
-    <p>This section provides more information about our services and features.</p>
-  </section>
-
-  <section class="parallax-container">
-    <div class="parallax">
-      <a href="https://example.com/another-section">
-        <div class="parallax-background" style="background-image: url('https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&w=60');"></div>
-      </a>
-      <div class="content">
-        <h2>Another Section</h2>
-        <p>More content with another parallax background.</p>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="hero-text">
+        <h1>DISCOVER ELEGANCE FOR EVERY AGE</h1>
+        <p>
+          Explore our exquisite collection tailored for women of every age.
+          <br />
+          Unparalleled sophistication, only at WESTERN19.
+        </p>
+        <button class="btn btn-golden">Shop Now</button>
+      </div>
+      <div class="hero-image">
+        <img
+          src="/src/assets/main.jpg"
+          alt="Elegant Dress"
+          class="img-fluid"
+        />
       </div>
     </div>
   </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section">
+    <h2 class="section-title">Ladies' Dresses</h2>
+    <div class="container my-5">
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card">
+            <img src="https://i.imgur.com/cLOdzoz.png" class="card-img-top" alt="Ladies Dress">
+            <div class="card-body text-center">
+              <h5 class="card-title">Ladies' Dress</h5>
+              <button class="btn btn-outline-golden">Shop Now</button>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat for more cards -->
+      </div>
+    </div>
+    
+  </section>
 </div>
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer class="text-center text-lg-start text-muted bg-black mt-3">
+  <!-- Section: Links -->
+  <section>
+    <div class="container text-center text-md-start pt-4 pb-4">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-12 col-lg-3 col-sm-12 mb-2">
+          <!-- Content -->
+          <a href="https://mdbootstrap.com/" target="_blank" class="text-warning h2">
+            western
+          </a>
+          <p class="mt-1 text-warning">© 2023 Copyright: MDBootstrap.com</p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <!-- Links -->
+          <h6 class="text-uppercase text-warning fw-bold mb-2">Store</h6>
+          <ul class="list-unstyled mb-4">
+            <li><a class="text-warning-50" href="#">About us</a></li>
+            <li><a class="text-warning-50" href="#">Find store</a></li>
+            <li><a class="text-warning-50" href="#">Categories</a></li>
+            <li><a class="text-warning-50" href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <!-- Links -->
+          <h6 class="text-uppercase text-warning fw-bold mb-2">Information</h6>
+          <ul class="list-unstyled mb-4">
+            <li><a class="text-warning-50" href="#">Help center</a></li>
+            <li><a class="text-warning-50" href="#">Money refund</a></li>
+            <li><a class="text-warning-50" href="#">Shipping info</a></li>
+            <li><a class="text-warning-50" href="#">Refunds</a></li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-6 col-sm-4 col-lg-2">
+          <!-- Links -->
+          <h6 class="text-uppercase text-warning fw-bold mb-2">Support</h6>
+          <ul class="list-unstyled mb-4">
+            <li><a class="text-warning-50" href="#">Help center</a></li>
+            <li><a class="text-warning-50" href="#">Documents</a></li>
+            <li><a class="text-warning-50" href="#">Account restore</a></li>
+            <li><a class="text-warning-50" href="#">My orders</a></li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-12 col-sm-12 col-lg-3">
+          <!-- Links -->
+          <h6 class="text-uppercase text-warning fw-bold mb-2">Newsletter</h6>
+          <p class="text-warning">
+            Stay in touch with the latest updates about our products and offers.
+          </p>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control border-warning"
+              placeholder="Email"
+              aria-label="Email"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-warning border-0 shadow-0"
+              type="button"
+              id="button-addon2"
+            >
+              Join
+            </button>
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links -->
+
+  <div class="bg-black">
+    <div class="container">
+      <div class="d-flex justify-content-between py-4 border-top border-warning">
+        <!-- Payment icons -->
+        <div>
+          <i class="fab fa-lg fa-cc-visa text-warning"></i>
+          <i class="fab fa-lg fa-cc-amex text-warning"></i>
+          <i class="fab fa-lg fa-cc-mastercard text-warning"></i>
+          <i class="fab fa-lg fa-cc-paypal text-warning"></i>
+        </div>
+        <!-- Payment icons -->
+
+        <!-- Language selector -->
+        <div class="dropdown dropup">
+          <a
+            class="dropdown-toggle text-warning"
+            href="#"
+            id="Dropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="flag-united-kingdom flag m-0 me-1"></i>English
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end bg-black border-warning" aria-labelledby="Dropdown">
+            <li>
+              <a class="dropdown-item text-warning" href="#"><i class="flag-united-kingdom flag"></i>English <i class="fa fa-check text-success ms-2"></i></a>
+            </li>
+            <li><hr class="dropdown-divider bg-warning" /></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-poland flag"></i>Polski</a></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-china flag"></i>中文</a></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-japan flag"></i>日本語</a></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-germany flag"></i>Deutsch</a></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-france flag"></i>Français</a></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-spain flag"></i>Español</a></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-russia flag"></i>Русский</a></li>
+            <li><a class="dropdown-item text-warning" href="#"><i class="flag-portugal flag"></i>Português</a></li>
+          </ul>
+        </div>
+        <!-- Language selector -->
+      </div>
+    </div>
+  </div>
+</footer>
 

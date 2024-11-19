@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'product-order',component: ProductOrderComponent, canActivate: [UserGuard]},
   { path: 'user-profile',component: ProfileComponent, canActivate:[UserGuard]},
   { path: 'edit-address',component: ProfileAddressComponent, canActivate:[UserGuard]},
-  { path: 'order-management',component: OrderDetilesComponent, canActivate:[AdminGuard]},
+  { path: 'order-management',component: OrderDetilesComponent, canActivate:[AdminGuard  ]},
 
 
 
