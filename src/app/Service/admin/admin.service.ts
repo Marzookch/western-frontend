@@ -36,6 +36,21 @@ export class AdminService {
     );
   }
 
+
+
+  getProducts(page: number = 1, limit: number = 10): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/admin/admin-admingetProducts?page=${page}&limit=${limit}`, {
+      withCredentials: true // Include credentials if needed
+    });
+  }
+
+  deleteProductById(productId: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/admin/admin-products-delete/${productId}`, {
+      withCredentials: true, // Include credentials if needed (e.g., for cookies)
+    });
+  }
+  
+  
   getCategoryList(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/Category/admin-category-listing`, {
       withCredentials: true // Include credentials if needed

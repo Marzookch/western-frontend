@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-header',
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent {
+  @Output() toggleSidebar = new EventEmitter<void>();
   constructor(private router: Router) { }
 
   logout() {

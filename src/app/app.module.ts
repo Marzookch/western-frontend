@@ -4,6 +4,13 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterLoginPageComponent } from './Component/common/register-login-page/register-login-page.component';
@@ -22,7 +29,10 @@ import { ProfileComponent } from './Component/User/profile/profile.component'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ProfileAddressComponent } from './Component/User/profile-address/profile-address.component';
-import { OrderDetilesComponent } from './Component/Admin/order-detiles/order-detiles.component'
+import { OrderDetilesComponent } from './Component/Admin/order-detiles/order-detiles.component';
+import { SidebarComponent } from './Component/Admin/sidebar/sidebar.component';
+import { AdminProductListingComponent } from './Component/Admin/admin-product-listing/admin-product-listing.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -41,6 +51,8 @@ import { OrderDetilesComponent } from './Component/Admin/order-detiles/order-det
     ProfileComponent,
     ProfileAddressComponent,
     OrderDetilesComponent,
+    SidebarComponent,
+    AdminProductListingComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +60,12 @@ import { OrderDetilesComponent } from './Component/Admin/order-detiles/order-det
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
 
   ],
   providers: [AdminService,

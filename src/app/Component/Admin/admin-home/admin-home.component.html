@@ -1,40 +1,46 @@
 <!-- Navbar -->
-<app-admin-header></app-admin-header>
-<!-- Navbar -->
-
-<!-- cards.component.html -->
-
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-3" >
-    <div class="col">
-      <div class="card text-bg-primary mb-3" style="max-width: 18rem ;cursor: pointer;" (click)="category()">
-   
-        <div class="card-body">
-          <h5 class="card-title">Category Management</h5>
-      
+<app-admin-header (toggleSidebar)="toggleSidebar()"></app-admin-header>
+<div class="d-flex">
+  <app-sidebar [isCollapsed]="isSidebarCollapsed"></app-sidebar>
+  <div class="content" [style.marginLeft]="isSidebarCollapsed ? '80px' : '250px'">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-3" >
+        <div class="col">
+          <div class="card text-bg-primary mb-3" style="max-width: 18rem ;cursor: pointer;" (click)="category()">
+       
+            <div class="card-body">
+              <h5 class="card-title">Category Management</h5>
+          
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card text-bg-secondary mb-3" style="max-width: 18rem ;cursor: pointer;" (click)="addproduct()" >
-     
-        <div class="card-body">
-          <h5 class="card-title">Product Management</h5>
-      
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card text-bg-success mb-3" style="max-width: 18rem ;cursor: pointer;" (click)="orderManagement()">
-  
-        <div class="card-body">
-          <h5 class="card-title">Success card title</h5>
+    
+        <div class="col">
+          <div class="card text-bg-secondary mb-3" style="max-width: 18rem ;cursor: pointer;" (click)="addproduct()" >
          
+            <div class="card-body">
+              <h5 class="card-title">Product Management</h5>
+          
+            </div>
+          </div>
+        </div>
+    
+        <div class="col">
+          <div class="card text-bg-success mb-3" style="max-width: 18rem ;cursor: pointer;" (click)="orderManagement()">
+      
+            <div class="card-body">
+              <h5 class="card-title">Success card title</h5>
+             
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- Navbar -->
+
+<!-- cards.component.html -->
+
+
 

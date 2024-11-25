@@ -20,4 +20,10 @@ export class AdminHomeComponent {
   orderManagement(): void {
     this.router.navigate(['/order-management']); // Replace '/detail' with your desired route
   }
+
+  isSidebarCollapsed = false;
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 }

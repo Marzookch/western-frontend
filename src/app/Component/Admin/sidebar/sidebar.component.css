@@ -1,28 +1,23 @@
-  /* Custom styles for the sidebar */
-  .sidebar {
+.sidebar {
     height: 100vh;
     background-color: #f8f9fa;
     position: fixed;
     left: 0;
-    top: 54;
+    top: 85;
     padding: 1rem;
     width: 250px;
     transition: all 0.3s;
   }
-
-  .content {
-    margin-left: 250px;
-    padding: 1rem;
-  }
-
+  
   .sidebar.collapsed {
     width: 80px;
   }
-
+  
   .sidebar.collapsed .nav-link span {
     display: none;
   }
-
+  
   .sidebar.collapsed .nav-link {
     text-align: center;
   }
+  

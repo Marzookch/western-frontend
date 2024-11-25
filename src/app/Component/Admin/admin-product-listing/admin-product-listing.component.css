@@ -1,0 +1,14 @@
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+  
+  .table {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  

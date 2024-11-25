@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/Service/admin/admin.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-admin-produt-adding',
   templateUrl: './admin-produt-adding.component.html',
@@ -16,6 +16,7 @@ export class AdminProdutAddingComponent implements OnInit {
   categories: any[] = [];
   imagePreviews: string[] = []; // To store image previews as base64 strings
   productRate :string = '';
+  supplierproductRate :string = '';
   errorMsg: string | null = null;
 
   private maxImageCount = 4;
@@ -85,6 +86,7 @@ export class AdminProdutAddingComponent implements OnInit {
     formData.append('productDescription', this.description);
     formData.append('categoryId', this.category);
     formData.append('productRate', this.productRate.toString());
+    formData.append('supplierproductRate', this.supplierproductRate.toString());
     
     this.selectedSizes.forEach((size, index) => {
       formData.append(`size[${index}]`, size);
@@ -100,10 +102,12 @@ export class AdminProdutAddingComponent implements OnInit {
 
     this.adminService.addProduct(formData).subscribe(
       (response) => {
-        console.log('Product added successfully:', response);
+        Swal.fire('Success', 'Product added successfully', 'success');
+        
       },
       (error) => {
         console.error('Error adding product:', error);
+           Swal.fire('Error', 'Failed to add product', 'error'); 
       }
     );
   }
